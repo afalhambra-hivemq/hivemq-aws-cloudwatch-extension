@@ -28,6 +28,6 @@ jobs:
 #          fail_on_unmatched_files: true
 #          make_latest: true
       - name: Upload GitHub Release Asset
-        run: gh release upload ${{ github.event.release.tag_name }} ./build/hivemq-extension/hivemq-aws-cloudwatch-extension-${{ github.event.release.name }}.zip
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload ${{ github.event.release.tag_name }} ./build/hivemq-extension/hivemq-aws-cloudwatch-extension-${{ github.event.release.name }}.zip
