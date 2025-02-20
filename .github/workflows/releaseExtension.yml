@@ -25,3 +25,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: ./build/hivemq-extension/hivemq-aws-cloudwatch-extension-${{ github.event.release.name }}.zip
+          fail_on_unmatched_files: true
+          make_latest: true
