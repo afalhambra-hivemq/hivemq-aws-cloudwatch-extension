@@ -19,11 +19,15 @@ jobs:
         uses: gradle/actions/setup-gradle@94baf225fe0a508e581a564467443d0e2379123b # v4
       - name: Build Zip
         run: ./gradlew hivemqExtensionZip
-      - name: Upload Release Asset
-        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          files: ./build/hivemq-extension/hivemq-aws-cloudwatch-extension-${{ github.event.release.name }}.zip
-          fail_on_unmatched_files: true
-          make_latest: true
+#      - name: Upload Release Asset
+#        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          files: ./build/hivemq-extension/hivemq-aws-cloudwatch-extension-${{ github.event.release.name }}.zip
+#          fail_on_unmatched_files: true
+#          make_latest: true
+      - name: Upload GitHub Release Asset
+        run: gh release upload ${{ github.event.release.tag_name }} ./build/hivemq-extension/hivemq-aws-cloudwatch-extension-${{ github.event.release.name }}.zip
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
